@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>冷色系</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+<style>
+
+/* ===== 基礎設定 ===== */
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+    --bg:#f7f6f2;
+    --primary:#32495c;
+    --accent:#6f8fa8;
+    --text:#444;
+    --soft:#8aa0b3;
+}
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:var(--bg);
+    font-family:'Zen Maru Gothic',sans-serif;
+    color:var(--text);
+}
+
+/* ===== 導覽列 ===== */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:999;
+
+    background:rgba(255,255,255,.55);
+    backdrop-filter: blur(18px);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:28px;
+    padding:14px 20px;
+    list-style:none;
+}
+
+nav a{
+    text-decoration:none;
+    color:#5a6b7a;
+    font-size:14px;
+    letter-spacing:1px;
+
+    position:relative;
+    padding:6px 4px;
+
+    transition:.25s;
+}
+
+nav a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:0%;
+    height:2px;
+    background:var(--accent);
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--primary);
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+nav a:active{
+    transform:scale(0.95);
+}
+
+nav a:hover{
+    letter-spacing:2px;
+}
+
+
+/* ===== Hero ===== */
+
+.hero{
+    height:100vh;
+    background:url("6061.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(20,30,40,.35);
+}
+
+.hero div{
+    position:relative;
+    z-index:2;
+    color:white;
+    max-width:600px;
+}
+
+.hero h1{
+    font-size:64px;
+    letter-spacing:6px;
+}
+
+.hero p{
+    font-size:16px;
+    opacity:.9;
+}
+
+/* ===== 共用區塊 ===== */
+
+section{
+    padding:100px 10%;
+}
+
+/* ===== 標題 ===== */
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+    font-size:38px;
+    font-family:'Noto Serif TC';
+    color:var(--primary);
+}
+
+/* ===== 角色 ===== */
+
+.character{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:14px;
+}
+
+.card h2{
+    margin:15px 0;
+    color:var(--primary);
+}
+
+/* ===== 主線 ===== */
+
+#main{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    max-width:900px;
+    margin:auto;
+}
+
+.story-card{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    cursor:pointer;
+    border:1px solid rgba(0,0,0,.05);
+    transition:.25s;
+    position:relative;
+}
+
+.story-card::before{
+    content:"✦";
+    position:absolute;
+    top:10px;
+    right:12px;
+    color:var(--accent);
+}
+
+.story-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+}
+
+.story-card h3{
+    margin-bottom:6px;
+    color:var(--primary);
+}
+
+.story-card p{
+    font-size:13px;
+    color:#888;
+}
+
+/* ===== 支線 ===== */
+
+#side-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:18px;
+    max-width:900px;
+    margin:auto;
+}
+
+#side .story-card{
+    border-left:3px solid var(--accent);
+}
+
+.side-card{
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    transition:.3s;
+}
+
+.side-card:hover{
+    transform:scale(1.03);
+}
+
+.side-card img{
+    width:100%;
+    display:block;
+}
+
+
+/* ===== 音樂 ===== */
+
+
+.music-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+    max-width:1000px;
+    margin:auto;
+    justify-content:center;
+}
+
+.music-card{
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    text-align:center;
+
+    width:320px;
+    margin:auto;
+}
+
+.music-card img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.music-card h3{
+    font-size:18px;
+    margin-top:14px;
+}
+
+.music-card a{
+    display:block;
+}
+
+.music-card img{
+    cursor:pointer;
+    transition:.3s;
+    border-radius:12px;
+}
+
+.music-card img:hover{
+    transform:scale(1.05);
+    filter:brightness(1.05);
+}
+
+.music-card img{
+    border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.music-card img:hover{
+    transform:scale(1.05);
+    filter:brightness(1.05);
+}
+
+
+.song-text{
+    padding:14px 18px;
+    font-size:15px;
+    color:var(--soft);
+    line-height:1.7;
+}
+
+/* ===== 圖庫 ===== */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:12px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.04);
+}
+
+/* ===== 印象色 ===== */
+
+.palette{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+}
+
+.circle{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    margin:auto;
+}
+
+/* ===== Modal ===== */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    z-index:9999;
+}
+
+.modal-content{
+    width:90%;
+    max-width:700px;
+    background:white;
+    margin:5% auto;
+    padding:40px;
+    border-radius:20px;
+    max-height:80vh;
+    overflow-y:auto;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    top:10px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+/* ===== 動畫 ===== */
+
+section{
+    opacity:0;
+    transform:translateY(20px);
+    animation:fadeUp .8s ease forwards;
+}
+
+section:nth-child(odd){ animation-delay:.1s; }
+section:nth-child(even){ animation-delay:.2s; }
+
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* ===== RWD ===== */
+
+@media(max-width:768px){
+
+.hero h1{ font-size:40px; }
+
+.palette{ flex-direction:column; align-items:center; }
+
+}
+
+/* ===== 書本背景 ===== */
+
+.book{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+/* ===== 書頁 ===== */
+
+.book-panel{
+    width:90%;
+    max-width:800px;
+    background:white;
+    border-radius:20px;
+    padding:40px;
+
+    transform-origin:left;
+    animation:pageOpen .6s ease forwards;
+
+    position:relative;
+}
+
+/* 翻頁動畫 */
+@keyframes pageOpen{
+    from{
+        transform: rotateY(-90deg) scale(0.9);
+        opacity:0;
+    }
+    to{
+        transform: rotateY(0deg) scale(1);
+        opacity:1;
+    }
+}
+
+/* 內容 */
+.book-content{
+    margin-top:20px;
+    line-height:2;
+    color:#555;
+
+    max-height:60vh;
+    overflow-y:auto;
+}
+
+/* 關閉 */
+.close{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:30px;
+    cursor:pointer;
+}
+
+
+/* 容器 */
+.card-grid{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+/* 卡牌外框（豎長方形） */
+.flip-card{
+    width:280px;
+    height:460px;
+}
+
+
+/* 內部翻轉 */
+.flip-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .8s;
+    transform-style:preserve-3d;
+}
+
+.flip-inner{
+    width:100%;
+    height:100%;
+    position:relative;
+    transition:transform .8s;
+    transform-style:preserve-3d;
+}
+
+/* 翻牌狀態 */
+.flip-card.flipped .flip-inner{
+    transform:rotateY(180deg);
+}
+
+/* 正反面 */
+.flip-front,
+.flip-back{
+    position:absolute;
+    width:100%;
+    height:100%;
+    border-radius:18px;
+    backface-visibility:hidden;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+
+/* 正面 */
+.flip-front{
+    background:white;
+}
+
+.flip-front{
+    display:flex;
+    flex-direction:column;
+}
+
+.flip-front img{
+    width:100%;
+    height:88%;
+    object-fit:cover;
+    display:block;
+}
+
+.flip-front h3{
+    margin:6px 0 0;
+    text-align:center;
+}
+
+.flip-front{
+    gap:0;
+}
+
+/* 背面 */
+.flip-back{
+    background:white;
+    transform:rotateY(180deg);
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:8px;
+    box-sizing:border-box;
+}
+
+.flip-back h3{
+    color:var(--primary);
+}
+
+.flip-back p{
+    font-size:13px;
+    color:#666;
+    line-height:1.5;
+}
+
+.flip-back p{
+    margin:0;
+    line-height:1.6;
+}
+
+.flip-back h3{
+    margin-bottom:6px;
+}
+
+.flip-back p{
+    font-size:13px;
+    color:#666;
+}
+
+:root{
+    --container:1000px;
+    --gap:20px;
+    --radius:18px;
+}
+
+.character,
+.music-grid,
+.gallery,
+#main,
+.side-grid{
+    gap:var(--gap) !important;
+}
+
+.card,
+.story-card,
+.music-card,
+.flip-card,
+.side-card{
+    border-radius:var(--radius);
+}
+
+.card,
+.music-card,
+.story-card{
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+
+h1,h2,h3{
+    letter-spacing:1px;
+}
+
+p{
+    line-height:1.7;
+}
+
+section + section{
+    margin-top:40px;
+}
+
+.character,
+.music-grid,
+.gallery,
+#main,
+.side-grid{
+    justify-content:center;
+    align-items:start;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<!-- 導覽 -->
+<nav>
+<ul>
+<li><a href="#home">首頁</a></li>
+<li><a href="#character">角色</a></li>
+<li><a href="#main">主線</a></li>
+<li><a href="#side">支線</a></li>
+<li><a href="#music">音樂</a></li>
+<li><a href="#gallery">圖庫</a></li>
+</ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="home">
+<div>
+<h1>冷色系</h1>
+<p>下輩子我要成為你眼角的一顆痣，足夠渺小，卻也足夠特別。
+    <br>你的每次淚流我都經歷，你的每個情緒我都感知。</p>
+</div>
+</section>
+
+<!-- 角色 -->
+<section id="character">
+<h2 class="title">角色介紹</h2>
+
+<div class="card-grid">
+
+<!-- 卡1 -->
+<div class="flip-card" onclick="toggleFlip(this)">
+  <div class="flip-inner">
+
+    <div class="flip-front">
+      <img src="4593.jpg">
+      <h3> ͞= ☆     萌音   .   ࿁</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3>萌音</h3>
+      <p>17歲｜學生會長</p>
+      <p>動物塑：貓咪</p>
+      <p>冷靜、溫柔、腹黑</p>
+      <p>「表面溫柔體貼，實則腹黑狡猾。」這大概說的就是萌音吧，平日裡是人見人愛的學生會長，但到了菲亞面前，就成了善於撩撥人心的小狐狸。在大家面前總是笑咪咪的，似乎只有一個情緒，只有與萌音最親近的人（菲亞）才能看到他最真實的一面。除了讀書外也擅長畫畫。在學校是人氣王，和誰都聊得來。</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- 卡2 -->
+<div class="flip-card" onclick="toggleFlip(this)">
+  <div class="flip-inner">
+
+    <div class="flip-front">
+      <img src="4954.jpg">
+      <h3>菲亞</h3>
+    </div>
+
+    <div class="flip-back">
+      <h3> ͞= ☆     菲亞   .   ࿁</h3>
+      <p>18歲｜實驗體</p>
+      <p>動物塑：狐狸</p>
+      <p>自由、直率、耀眼</p>
+      <p>短暫接觸菲亞的人都認為她時常面帶微笑卻性格冷漠，只有與她深交的人才明白，她其實有如春天的陽光般，明亮卻不刺眼。喜歡與人交流，但不會主動接近他人。不擅表達喜怒哀樂，難過時萌音會帶著她到天臺戴著耳機聽音樂，讓心情平復下來。在學校時總是來無影去無蹤，經常出現在意想不到的地方。</p>
+    </div>
+
+  </div>
+</div>
+
+</div>
+</section>
+
+<!-- 主線 -->
+<section id="main">
+<h2 class="title">主線篇章</h2>
+
+<div class="story-card" onclick="openBook(1)">
+<h3>01｜初遇</h3><p>直到和你相遇那刻，我才稱之為命運。</p>
+</div>
+
+<div class="story-card" onclick="openBook(2)">
+<h3>02｜觸動</h3><p>目光所及，都是你。</p>
+</div>
+
+<div class="story-card" onclick="openBook(3)">
+<h3>03｜邀約</h3><p>謝謝你的出現，你很重要，也很特別。</p>
+</div>
+
+<div class="story-card" onclick="openBook(4)">
+<h3>04｜日常</h3><p>好幸運，我們遇見了。</p>
+</div>
+
+<div class="story-card" onclick="openBook(5)">
+<h3>05｜意外</h3><p>眼淚不是我們的答案，拼搏才是我們的選擇。</p>
+</div>
+
+<div class="story-card" onclick="openBook(6)">
+<h3>06｜誤會</h3><p>我又原諒你了，我又和你一起欺負我。</p>
+</div>
+
+<div class="story-card" onclick="openBook(7)">
+<h3>07｜曖昧</h3><p>匆匆兩三年，忽然又夏天。</p>
+</div>
+
+<div class="story-card" onclick="openBook(8)">
+<h3>08｜告白</h3><p>你身上什麼味道，瞳孔的深淺，懷抱的溫度，我現在都知道了。</p>
+</div>
+
+</section>
+
+<!-- 支線 -->
+<section id="side">
+<h2 class="title">支線篇章</h2>
+
+<div id="side-grid">
+
+<div class="story-card" onclick="openBook('s1')">
+<h3>支線 01｜秘密花園</h3>
+<p>未被記錄的日常片段</p>
+</div>
+
+<div class="story-card" onclick="openBook('s2')">
+<h3>支線 02｜雨夜</h3>
+<p>只有兩人知道的那晚</p>
+</div>
+
+<div class="story-card" onclick="openBook('s3')">
+<h3>支線 03｜遺失的信</h3>
+<p>沒有寄出的告白</p>
+</div>
+
+<div class="story-card" onclick="openBook('s4')">
+<h3>支線 04｜回憶碎片</h3>
+<p>被時間沖淡的瞬間</p>
+</div>
+
+</div>
+</section>
+
+<!-- 音樂 -->
+<section id="music">
+<h2 class="title">印象歌曲</h2>
+
+<div class="music-grid">
+
+<div class="music-card" onclick="window.open('https://youtu.be/IKKar5SS29E?si=knnz5ailU6SkN4Vk','_blank')">
+    <img src="fei music.jpg">
+    <h3>萌音</h3>
+    <p class="song-text">溫柔卻帶孤獨</p>
+</div>
+
+<div class="music-card" onclick="window.open('https://youtu.be/JWX2eik5gRM?si=si0OVfsy4EJMfLp_','_blank')">
+    <img src="meng music.jpg">
+    <h3>菲亞</h3>
+    <p class="song-text">自由而耀眼</p>
+</div>
+
+</div>
+</section>
+
+<!-- 圖庫 -->
+<section id="gallery">
+<h2 class="title">圖庫</h2>
+
+<div class="gallery">
+<img src="5586.jpg">
+<img src="5575.jpg">
+<img src="6060.jpg">
+<img src="6059.jpg">
+</div>
+</section>
+
+<footer style="text-align:center;padding:50px;color:#999;">
+© 2026 OC Website
+</footer>
+
+<!-- Modal -->
+<div id="chapter1" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('chapter1')">×</span>
+<h2>Chapter 01</h2>
+<p>內容...</p>
+</div>
+</div>
+
+<div id="chapter2" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal('chapter2')">×</span>
+<h2>Chapter 02</h2>
+<p>內容...</p>
+</div>
+</div>
+
+<script>
+function openBook(chapter){
+
+    const book = document.getElementById("book");
+    const title = document.getElementById("book-title");
+    const content = document.getElementById("book-content");
+
+    book.style.display = "flex";
+
+    if(chapter === 1){
+        title.innerText = "Chapter 01｜初遇";
+        content.innerHTML = `
+        <p>
+         <br>那天陽光明媚，少年少女們也在肆意的揮灑青春，除了萌音。她好像被世界隔絕一般，只坐在窗邊靜靜發呆。
+         <br>萌音斜靠在窗邊的椅子上，眼神漫不經心的掃過窗外一成不變的風景，手中的書本翻開了幾頁後便再也沒有動靜。她的心思似乎飄到了很遠的地方，對周圍的一切都提不起興趣。
+         <br>「去下城區吧。 」萌音的腦海裡倏地出現這個想法。
+         <br>向來不是衝動行動派的萌音，這次心中產生了動搖。
+         <br>這是身為乖乖牌學生的第一次逃課。
+         ——
+         <br>「太陽真大啊，早知道不挑這天來下層區了… 」萌音喃喃自語道。
+         <br>「喂！別跑！」身後響起一聲怒吼。
+         <br>萌音困惑地回頭看去，正巧和迎面跑過來的少女撞個正著。那位少女的紫色雙眸在陽光的襯托下，顯得格外清澈，神色卻略顯慌張。萌音也是想都沒想，就抓著少女纖細的手腕迅速逃離那群人的追捕。
+         <br>過了不久，擺脫了那群人的追捕，兩人來到了一間麵包店外的角落。
+         <br>「謝謝你剛才幫了我，我該怎麼報答你？」少女的眼神感激，似乎剛才受了一番驚嚇。
+         <br>「舉手之勞而已。」萌音聳了聳肩，不過這還是第一次遇到有人這麼真誠地說要報答呢，這讓她瞬間對眼前的少女有了興趣。
+         <br>「我叫萌音，你呢？」
+         <br>「我是菲亞，請多指教。」
+         <br>她與她對望片刻，然後不約而同的相視一笑。
+         <br>——
+         <br>那天夕陽的濡沐下，回首時的驚鴻一瞥，是我整個夏天的記憶。
+        </p>
+
+        `;
+    }
+
+    if(chapter === 2){
+        title.innerText = "Chapter 02｜觸動";
+        content.innerHTML = `
+        <p>
+            <br>距離那次見面已經過了兩個禮拜了。
+            <br>在這期間，菲亞總是會無故想起那張臉龐。兩人明明是剛相識，菲亞卻格外地在意那名來自上層區的少女，甚至會開始期待與她的見面。
+            <br>「待在實驗室原來是這麼無聊的事情嗎？」菲亞自小無父無母，早已習慣了孤獨，這次卻忍不住抱怨了起來。
+            <br>正當菲亞這麼想的時候，一張紙條悄悄地從門縫下探了進來。她記得，這是上次見面過後兩人的專屬暗號。
+            <br>——
+            <br>在得知菲亞是實驗體之後，萌音不僅沒有任何的排斥，還包容了菲亞不被世俗認可的身分，這讓她心中對萌音的好感度再次提升了不少。
+            <br>不過菲亞還沒有告訴萌音她的異能。
+            <br>「怎麼突然來了？」菲亞試探性地詢問，內心帶著一點緊張。
+            <br>萌音嘴角含笑，眼神中略帶調皮，「想見你，所以來了。」
+            <br>「…別開玩笑。」萌音向來很不擅長應對這種話，她瞬間不知道要說甚麼，硬生生地擠出幾個字。
+            <br>「害羞了？」萌音裝作不經意的撩了撩頭髮，卻沒注意到，藏在頭髮下的耳朵正微微泛紅，不過只是出於不好意思罷了。
+            <br>菲亞裝作毫無波瀾的站了起來，「走！我帶妳看看下層區！」
+            <br>「你這樣會再被帶走吧？」萌音略為擔憂地問道。
+            <br>等不到菲亞的回答，萌音的手就被她抓著向外跑去。
+            <br>——
+            <br>萌音站在一棵大樹下，茂密的枝葉擋住日光，斑駁的樹影隨風晃動，一時只聽得蟲鳴鳥叫。這裡跟她想像中的相差甚遠。
+            <br>菲亞就在那陽光下，穿著乾淨鬆敞的白色連身裙，微風輕拂，鬢間幾縷碎髮晃動，像極了誤闖人間的仙子，讓萌音一時之間看了失神。
+            <br>少女的目光輕輕一轉，那雙眸子裡藏著星辰大海，讓人一眼望去，便不由自主的沉醉其中。萌音的心跳錯了節拍，她微微側頭，再和少女對上眼時，竟有些倉惶失措。
+            <br>——
+            <br>玩了一整天，兩人互相道別後回到各自的居所，此時的黃日正緩緩沉到地平線以下，窗外的日頭西斜，天邊扯出片晚霞，將天空映照的似金似紅，美的像是肆意潑墨的油畫。
+            <br>菲亞看著萌音的背影漸行漸遠，意識到了某種失去，內心充滿了傷感的悸動。
+            <br>「好想趕快再見面。」實驗室窗外的風吹來，每一絲，都在訴說一個故事，莫名的牽引著菲亞的心弦。
+            <br>——
+            <br>萌音躺在床上，沈浸在思緒的海洋中，菲亞的身影還歷歷在目。萌音的心像被狂風捲起的落葉，四處飄散。這是萌音第一次感受到內心是如此的躁動，她隨手拿起一本書案在胸口，試圖把心跳的節奏穩住，卻發現只徒勞。
+            <br>萌音的眼睛緊閉著，可是大腦卻像一台永遠不停轉的機器，讓他無法入睡。
+        </p>
+        `;
+    }
+}
+
+function closeBook(){
+    document.getElementById("book").style.display = "none";
+}
+
+function toggleFlip(card){
+
+    // 如果已經翻開 → 收回
+    if(card.classList.contains("flipped")){
+        card.classList.remove("flipped");
+    }
+    // 沒翻開 → 翻開
+    else{
+        card.classList.add("flipped");
+    }
+}
+
+</script>
+
+<div id="book" class="book">
+  <div class="book-panel">
+
+    <span class="close" onclick="closeBook()">×</span>
+
+    <h2 id="book-title">Chapter</h2>
+
+    <div id="book-content" class="book-content">
+      內容
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
